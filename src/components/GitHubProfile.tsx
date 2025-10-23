@@ -25,7 +25,7 @@ const githubStats = [
   },
   {
     label: "Followers",
-    value: "50+",
+    value: "100+",
     icon: Eye,
     color: "text-accent",
   },
