@@ -17,24 +17,24 @@ export const Hero = () => {
             />
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up">
+          <h1 className="font-display text-white mb-6 animate-fade-in-up tracking-tight">
             Shaharyar Shamshi
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 mb-4 animate-fade-in-up animation-delay-100">
+          <p className="text-xl md:text-2xl text-white/90 font-medium mb-6 animate-fade-in-up animation-delay-100">
             Co-Founder & CTO at HelioExpect
           </p>
           
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8 animate-fade-in-up animation-delay-200">
+          <p className="text-lg md:text-xl text-white/75 max-w-3xl mx-auto mb-12 animate-fade-in-up animation-delay-200 leading-relaxed font-light">
             Building advanced forecasting and predictive monitoring tools to empower renewable energy producers.
             Passionate about leveraging technology to accelerate renewable energy adoption.
           </p>
           
-          <div className="flex gap-4 justify-center mb-12 animate-fade-in-up animation-delay-300">
+          <div className="flex flex-wrap gap-4 justify-center mb-16 animate-fade-in-up animation-delay-300">
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
               asChild
             >
               <a href="https://github.com/shaharyar-shamshi" target="_blank" rel="noopener noreferrer">
@@ -46,7 +46,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
               asChild
             >
               <a href="https://www.linkedin.com/in/shaharyarshamshi/" target="_blank" rel="noopener noreferrer">
@@ -58,7 +58,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
               asChild
             >
               <a href="mailto:shaharyarshamshi@gmail.com">
