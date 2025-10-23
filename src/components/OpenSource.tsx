@@ -6,6 +6,21 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const contributions = [
   {
+    project: "Material-UI (MUI)",
+    role: "Open Source Contributor",
+    period: "2018 - 2019",
+    description:
+      "Contributed to Material-UI, one of the world's most popular React component libraries with millions of downloads.",
+    contributions: [
+      "Fixed bugs in core components",
+      "Improved component accessibility",
+      "Enhanced TypeScript definitions",
+      "Documentation improvements",
+    ],
+    tags: ["React", "TypeScript", "Material Design"],
+    link: "https://github.com/mui/material-ui",
+  },
+  {
     project: "Countly",
     role: "Open Source FullStack Developer",
     period: "September 2021 - July 2022",
