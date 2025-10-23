@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, GitFork, Star } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const contributions = [
   {
@@ -56,20 +57,26 @@ export const OpenSource = () => {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display tracking-tight">
             Open Source Contributions
           </h2>
 
-          <p className="text-xl text-muted-foreground text-center mb-16">
+          <p className="text-xl text-muted-foreground text-center mb-16 font-light">
             Contributing to the developer community and open source ecosystem
           </p>
 
           <div className="space-y-8">
-            {contributions.map((contrib, index) => (
-              <Card
-                key={index}
-                className="p-8 shadow-soft hover:shadow-medium transition-all duration-300"
-              >
+            {contributions.map((contrib, index) => {
+              const { ref, isVisible } = useScrollReveal();
+              return (
+                <Card
+                  key={index}
+                  ref={ref}
+                  className={`p-8 shadow-soft hover:shadow-elegant transition-all duration-500 hover-lift elegant-border bg-gradient-card ${
+                    isVisible ? 'animate-slide-in-right' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -98,7 +105,7 @@ export const OpenSource = () => {
                   </Button>
                 </div>
 
-                <p className="text-foreground/80 mb-6 leading-relaxed">
+                <p className="text-foreground/80 mb-6 leading-relaxed font-light">
                   {contrib.description}
                 </p>
 
@@ -127,18 +134,19 @@ export const OpenSource = () => {
                   ))}
                 </div>
               </Card>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-12 text-center">
-            <Card className="p-8 bg-gradient-hero text-white inline-block">
-              <p className="text-lg mb-4">
+            <Card className="p-8 bg-gradient-hero text-white inline-block animate-gradient shadow-glow hover:shadow-medium transition-all duration-500">
+              <p className="text-lg mb-4 font-light">
                 Interested in collaborating on open source projects?
               </p>
               <Button
                 variant="secondary"
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
+                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white hover:scale-105 transition-all duration-300"
                 asChild
               >
                 <a

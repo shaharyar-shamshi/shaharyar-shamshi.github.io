@@ -4,16 +4,17 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero animate-gradient">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2djEyaDEyVjE2SDM2ek0xMiAxNnYxMmgxMlYxNkgxMnpNMzYgNDB2MTJoMTJWNDBIMzZ6TTEyIDQwdjEyaDEyVjQwSDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 animate-gradient"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in">
+          <div className="mb-8 animate-scale-in">
             <img
               src={profilePhoto}
               alt="Shaharyar Shamshi"
-              className="w-40 h-40 rounded-full mx-auto object-cover border-4 border-white/20 shadow-2xl"
+              className="w-40 h-40 rounded-full mx-auto object-cover border-4 border-white/20 shadow-2xl hover:scale-110 transition-transform duration-500 animate-glow-pulse"
             />
           </div>
           
@@ -34,7 +35,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-100"
               asChild
             >
               <a href="https://github.com/shaharyar-shamshi" target="_blank" rel="noopener noreferrer">
@@ -46,7 +47,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-200"
               asChild
             >
               <a href="https://www.linkedin.com/in/shaharyarshamshi/" target="_blank" rel="noopener noreferrer">
@@ -58,7 +59,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-medium transition-all duration-300 font-medium"
+              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-300"
               asChild
             >
               <a href="mailto:shaharyarshamshi@gmail.com">

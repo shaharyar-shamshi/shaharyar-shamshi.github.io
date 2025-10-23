@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Zap, Building2, TrendingUp, Users } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const projects = [
   {
@@ -66,21 +67,26 @@ export const Projects = () => {
     <section className="py-24 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display tracking-tight">
             Key Projects
           </h2>
 
-          <p className="text-xl text-muted-foreground text-center mb-16">
+          <p className="text-xl text-muted-foreground text-center mb-16 font-light">
             Building scalable solutions that make a real-world impact
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => {
               const Icon = project.icon;
+              const { ref, isVisible } = useScrollReveal();
               return (
                 <Card
                   key={index}
-                  className="p-8 shadow-soft hover:shadow-medium transition-all duration-300 group"
+                  ref={ref}
+                  className={`p-8 shadow-soft hover:shadow-elegant transition-all duration-500 group hover-lift hover-glow elegant-border bg-gradient-card ${
+                    isVisible ? 'animate-scale-in' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
