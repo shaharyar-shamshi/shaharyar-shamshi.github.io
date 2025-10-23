@@ -13,7 +13,7 @@ const experiences = [
   {
     company: "Chima (YC-W23)",
     role: "FullStack Developer",
-    period: "June 2024 - Present",
+    period: "June 2024 - June 2025",
     location: "Remote",
     description: "Developed B2B SaaS platform using Next.js, React, and Tailwind. Architected cloud infrastructure on AWS and led migration to Azure. Built centralized auth server and content creation dashboard.",
     tags: ["Next.js", "AWS", "Azure", "DevOps"],

@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, User, MessageSquare } from "lucide-react";
+import { Mail, User, MessageSquare } from "lucide-react";
 
 const contactSchema = z.object({
   fullName: z
@@ -28,11 +28,6 @@ const contactSchema = z.object({
     .trim()
     .email({ message: "Please enter a valid email address" })
     .max(255, { message: "Email must be less than 255 characters" }),
-  telephone: z
-    .string()
-    .trim()
-    .min(10, { message: "Please enter a valid phone number" })
-    .max(20, { message: "Phone number must be less than 20 characters" }),
   subject: z
     .string()
     .trim()
@@ -56,7 +51,6 @@ export const ContactForm = () => {
     defaultValues: {
       fullName: "",
       email: "",
-      telephone: "",
       subject: "",
       message: "",
     },
@@ -70,7 +64,6 @@ export const ContactForm = () => {
       const mailtoBody = `
 Name: ${data.fullName}
 Email: ${data.email}
-Phone: ${data.telephone}
 
 Message:
 ${data.message}
@@ -116,94 +109,69 @@ ${data.message}
           <Card className="p-8 md:p-12 shadow-medium">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="fullName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          Full Name
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter your full name"
-                            {...field}
-                            className="h-12"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        Full Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your full name"
+                          {...field}
+                          className="h-12"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                  <FormField
-                    control={form.control}
-                    name="telephone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="flex items-center gap-2">
-                          <Phone className="w-4 h-4" />
-                          Telephone
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter your phone number"
-                            {...field}
-                            className="h-12"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Mail className="w-4 h-4" />
+                        Email
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="Enter your email"
+                          {...field}
+                          className="h-12"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="flex items-center gap-2">
-                          <Mail className="w-4 h-4" />
-                          Email
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="Enter your email"
-                            {...field}
-                            className="h-12"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="flex items-center gap-2">
-                          <MessageSquare className="w-4 h-4" />
-                          Subject
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter subject"
-                            {...field}
-                            className="h-12"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <MessageSquare className="w-4 h-4" />
+                        Subject
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter subject"
+                          {...field}
+                          className="h-12"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <FormField
                   control={form.control}

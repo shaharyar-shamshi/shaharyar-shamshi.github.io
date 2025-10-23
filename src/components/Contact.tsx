@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Phone } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 export const Contact = () => {
   return (
@@ -18,11 +18,11 @@ export const Contact = () => {
           </p>
           
           <Card className="p-8 md:p-12 bg-white/10 backdrop-blur-md border-white/20 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="mb-8">
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-white h-auto py-4"
+                className="bg-white/10 border-white/20 hover:bg-white/20 text-white h-auto py-4 w-full max-w-md mx-auto"
                 asChild
               >
                 <a href="mailto:shaharyarshamshi@gmail.com" className="flex items-center justify-center gap-3">
@@ -30,21 +30,6 @@ export const Contact = () => {
                   <div className="text-left">
                     <div className="text-xs text-white/70">Email</div>
                     <div className="font-medium">shaharyarshamshi@gmail.com</div>
-                  </div>
-                </a>
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-white h-auto py-4"
-                asChild
-              >
-                <a href="tel:+919882876634" className="flex items-center justify-center gap-3">
-                  <Phone className="w-5 h-5" />
-                  <div className="text-left">
-                    <div className="text-xs text-white/70">Phone</div>
-                    <div className="font-medium">+91 98828 76634</div>
                   </div>
                 </a>
               </Button>
