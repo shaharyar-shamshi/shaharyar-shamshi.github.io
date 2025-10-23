@@ -15,12 +15,25 @@ export const About = () => {
           </p>
           
           <Card className="p-8 md:p-12 shadow-medium border-0 mb-12">
-            <p className="text-lg leading-relaxed text-foreground/90">
+            <p className="text-lg leading-relaxed text-foreground/90 mb-6">
               As Co-Founder and CTO at <span className="font-semibold text-primary">HelioExpect</span>, 
               I'm leading the development of cutting-edge forecasting and predictive monitoring tools 
               that empower renewable energy producers. Our mission is to reduce grid penalties and 
               enable seamless integration with national power infrastructure, accelerating renewable 
               energy adoption and strengthening the resilience of our energy systems.
+            </p>
+            
+            <p className="text-lg leading-relaxed text-foreground/90 mb-6">
+              With over <span className="font-semibold text-secondary">5 years of professional experience</span> as 
+              a Full-Stack Engineer, I've built scalable solutions across diverse industries including fintech, 
+              EdTech, SaaS platforms, and renewable energy. I've contributed to products serving millions of users 
+              and led teams in building robust cloud infrastructure on AWS and Azure.
+            </p>
+            
+            <p className="text-lg leading-relaxed text-foreground/90">
+              My technical expertise spans the entire stack—from React and Next.js on the frontend to Spring Boot 
+              and Django on the backend, with extensive experience in cloud architecture, DevOps, and database 
+              optimization. I'm passionate about writing clean, maintainable code and building systems that scale.
             </p>
           </Card>
           

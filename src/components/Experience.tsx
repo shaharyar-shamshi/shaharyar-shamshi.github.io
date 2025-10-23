@@ -27,6 +27,14 @@ const experiences = [
     tags: ["React", "PDF", "Performance", "Accessibility"],
   },
   {
+    company: "Countly",
+    role: "Full Stack Developer",
+    period: "September 2021 - July 2022",
+    location: "Remote",
+    description: "Open source contributor focused on modernizing the platform. Migrated multiple plugins from jQuery to Vue.js, improving performance and maintainability across the analytics platform.",
+    tags: ["Vue.js", "JavaScript", "Open Source"],
+  },
+  {
     company: "BharatPe",
     role: "Software Engineer",
     period: "September 2021 - February 2023",
@@ -49,6 +57,22 @@ const experiences = [
     location: "New Delhi",
     description: "Built subscription management, PDF report generation, and AutoCAD export features. Set up CI/CD on Azure DevOps with AWS deployment. Migrated to GKE and configured ECS infrastructure.",
     tags: ["Django", "Vue.js", "AWS", "Docker", "Kubernetes"],
+  },
+  {
+    company: "JungleWorks",
+    role: "Software Engineer",
+    period: "July 2019 - February 2020",
+    location: "Chandigarh",
+    description: "Created Dynamic Theme Engine for Yelo product using Angular. Built AI-powered content engine KIKI from scratch. Developed news scraping library and implemented trending algorithms.",
+    tags: ["Angular", "Node.js", "AI/ML"],
+  },
+  {
+    company: "Dexecure",
+    role: "Software Developer",
+    period: "May 2018 - April 2019",
+    location: "Singapore (Remote)",
+    description: "Developed backend solutions for optimization dashboard. Integrated Stripe payment gateway. Migrated image processing from ImageMagick to GraphicsMagick, improving efficiency.",
+    tags: ["Node.js", "JavaScript", "Stripe"],
   },
 ];
 
