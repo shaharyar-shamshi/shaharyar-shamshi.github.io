@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, Star, GitFork, Eye, ExternalLink } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { GitHubContributionChart } from "./GitHubContributionChart";
 
 const githubStats = [
   {
@@ -62,7 +61,6 @@ const featuredRepos = [
 export const GitHubProfile = () => {
   const { ref: statsRef, isVisible: statsVisible } = useScrollReveal();
   const { ref: reposRef, isVisible: reposVisible } = useScrollReveal();
-  const { ref: chartRef, isVisible: chartVisible } = useScrollReveal();
 
   return (
     <section className="py-32 bg-gradient-subtle">
@@ -90,20 +88,6 @@ export const GitHubProfile = () => {
                 <ExternalLink className="ml-2 h-4 w-4" />
               </a>
             </Button>
-          </div>
-
-          {/* Contribution Chart */}
-          <div
-            ref={chartRef}
-            className={`mb-20 ${chartVisible ? 'animate-fade-in' : 'opacity-0'}`}
-          >
-            <Card className="p-8 shadow-soft hover:shadow-elegant transition-all duration-500 elegant-border bg-gradient-card">
-              <h3 className="text-2xl font-bold mb-6 font-display tracking-tight flex items-center gap-2">
-                <Github className="w-6 h-6 text-primary" />
-                Contribution Activity
-              </h3>
-              <GitHubContributionChart />
-            </Card>
           </div>
 
           {/* Stats Grid */}
