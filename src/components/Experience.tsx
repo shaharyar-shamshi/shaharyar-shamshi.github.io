@@ -121,8 +121,8 @@ export const Experience = () => {
                       {exp.tags.map((tag, tagIndex) => (
                         <Badge
                           key={tagIndex}
-                          variant="secondary"
-                          className="bg-muted hover:bg-muted/80"
+                          variant="outline"
+                          className="font-light"
                         >
                           {tag}
                         </Badge>
