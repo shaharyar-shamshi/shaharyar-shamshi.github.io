@@ -39,7 +39,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-100"
+              className="backdrop-blur-sm shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-100"
               asChild
             >
               <a href="https://github.com/shaharyar-shamshi" target="_blank" rel="noopener noreferrer">
@@ -51,7 +51,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-200"
+              className="backdrop-blur-sm shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-200"
               asChild
             >
               <a href="https://www.linkedin.com/in/shaharyarshamshi/" target="_blank" rel="noopener noreferrer">
@@ -63,7 +63,7 @@ export const Hero = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white/90 backdrop-blur-sm border-0 hover:bg-white text-foreground shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-300"
+              className="backdrop-blur-sm shadow-elegant hover:shadow-glow transition-all duration-500 font-medium hover:scale-105 animation-delay-300"
               asChild
             >
               <a href="mailto:shaharyarshamshi@gmail.com">
