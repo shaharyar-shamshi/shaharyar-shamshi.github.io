@@ -63,7 +63,7 @@ export const GitHubProfile = () => {
   const { ref: reposRef, isVisible: reposVisible } = useScrollReveal();
 
   return (
-    <section className="py-32 bg-gradient-subtle">
+    <section id="github" className="py-32 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

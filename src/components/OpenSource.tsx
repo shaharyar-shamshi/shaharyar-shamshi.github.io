@@ -69,7 +69,7 @@ const contributions = [
 
 export const OpenSource = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="opensource" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display tracking-tight">

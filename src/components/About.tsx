@@ -3,7 +3,7 @@ import { Zap, TrendingUp, Shield } from "lucide-react";
 
 export const About = () => {
   return (
-    <section className="py-32 bg-gradient-subtle">
+    <section id="about" className="py-32 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-center mb-8 tracking-tight">
