@@ -17,7 +17,7 @@ export const About = () => {
           <Card className="p-10 md:p-14 shadow-soft hover:shadow-medium transition-all duration-500 elegant-border bg-gradient-card mb-16">
             <p className="text-lg md:text-xl leading-relaxed text-foreground/80 mb-8 font-light">
               As Co-Founder and CTO at <span className="font-semibold text-primary">HelioExpect</span>{" "}
-              <span className="text-base text-muted-foreground">(Incubated by IIIT Hyderabad)</span>, 
+              <span className="text-base text-muted-foreground">(Incubated by AIC-IIITH, IIIT Hyderabad)</span>, 
               I'm leading the development of cutting-edge forecasting and predictive monitoring tools
               that empower renewable energy producers. Our mission is to reduce grid penalties and 
               enable seamless integration with national power infrastructure, accelerating renewable 
