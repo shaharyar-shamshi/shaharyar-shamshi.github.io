@@ -45,7 +45,7 @@ export const Navigation = () => {
         {/* Logo/Name */}
         <button
           onClick={() => scrollToSection("#hero")}
-          className="text-xl font-display font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-xl font-display font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity whitespace-nowrap"
         >
           Shaharyar Shamshi
         </button>
