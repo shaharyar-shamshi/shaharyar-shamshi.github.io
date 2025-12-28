@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -62,19 +62,8 @@ export const Navigation = () => {
               {item.name}
             </Button>
           ))}
-          <div className="ml-auto flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="hidden lg:flex rounded-full border-primary/20 hover:bg-primary/10 hover:text-primary gap-2"
-              onClick={() => window.open("/resume.pdf", "_blank")}
-            >
-              <FileText className="w-4 h-4" />
-              <span>Resume</span>
-            </Button>
-            <div className="pl-2 border-l border-border/50">
-              <ThemeToggle />
-            </div>
+          <div className="ml-auto pl-2 border-l border-border/50">
+            <ThemeToggle />
           </div>
         </div>
 
