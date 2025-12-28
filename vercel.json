@@ -1,4 +1,8 @@
 {
+  "framework": "vite",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
     {
       "handle": "filesystem"
@@ -19,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*).js",
+      "source": "/(.*)\\.js",
       "headers": [
         {
           "key": "Content-Type",
@@ -28,25 +32,7 @@
       ]
     },
     {
-      "source": "/(.*).mjs",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).tsx",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).ts",
+      "source": "/(.*)\\.mjs",
       "headers": [
         {
           "key": "Content-Type",
@@ -56,3 +42,4 @@
     }
   ]
 }
+
