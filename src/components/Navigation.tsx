@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -36,74 +36,83 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant border-b border-border/50"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-5xl rounded-full border ${isScrolled
+        ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-elegant border-white/20 dark:border-white/10"
+        : "bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-transparent shadow-none"
+        } px-6`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
-          <button
-            onClick={() => scrollToSection("#hero")}
-            className="text-xl font-display font-semibold tracking-tight hover:text-primary transition-colors"
-          >
-            Shaharyar Shamshi
-          </button>
+      <div className="flex items-center justify-between h-16">
+        {/* Logo/Name */}
+        <button
+          onClick={() => scrollToSection("#hero")}
+          className="text-xl font-display font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+        >
+          Shaharyar Shamshi
+        </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-2">
+          {navItems.map((item) => (
+            <Button
+              key={item.name}
+              variant="ghost"
+              onClick={() => scrollToSection(item.href)}
+              className="font-medium text-sm rounded-full hover:bg-primary/10 hover:text-primary transition-colors h-9 px-4"
+            >
+              {item.name}
+            </Button>
+          ))}
+          <div className="ml-auto flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden lg:flex rounded-full border-primary/20 hover:bg-primary/10 hover:text-primary gap-2"
+              onClick={() => window.open("/resume.pdf", "_blank")}
+            >
+              <FileText className="w-4 h-4" />
+              <span>Resume</span>
+            </Button>
+            <div className="pl-2 border-l border-border/50">
+              <ThemeToggle />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="rounded-full"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl animate-fade-in-up md:hidden">
+          <div className="flex flex-col gap-2">
             {navItems.map((item) => (
               <Button
                 key={item.name}
                 variant="ghost"
                 onClick={() => scrollToSection(item.href)}
-                className="font-light hover:text-primary transition-colors"
+                className="justify-start font-medium rounded-xl h-12"
               >
                 {item.name}
               </Button>
             ))}
-            <div className="ml-4">
-              <ThemeToggle />
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <Button
-                  key={item.name}
-                  variant="ghost"
-                  onClick={() => scrollToSection(item.href)}
-                  className="justify-start font-light hover:text-primary transition-colors"
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </nav>
   );
 };

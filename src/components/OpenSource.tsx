@@ -1,78 +1,17 @@
-import { Card } from "@/components/ui/card";
+import { openSourceContributions } from "@/data/resume";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, GitFork, Star } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-const contributions = [
-  {
-    project: "Material-UI (MUI)",
-    role: "Open Source Contributor",
-    period: "2018 - 2019",
-    description:
-      "Contributed to Material-UI, one of the world's most popular React component libraries with millions of downloads.",
-    contributions: [
-      "Fixed bugs in core components",
-      "Improved component accessibility",
-      "Enhanced TypeScript definitions",
-      "Documentation improvements",
-    ],
-    tags: ["React", "TypeScript", "Material Design"],
-    link: "https://github.com/mui/material-ui",
-  },
-  {
-    project: "Countly",
-    role: "Open Source FullStack Developer",
-    period: "September 2021 - July 2022",
-    description:
-      "Major contributor to Countly analytics platform. Migrated multiple plugins from jQuery to Vue.js, significantly improving performance and maintainability.",
-    contributions: [
-      "Migrated 15+ plugins from jQuery to Vue.js",
-      "Contributed to UI component library",
-      "Improved code consistency across application",
-      "Enhanced performance with modern framework patterns",
-    ],
-    tags: ["Vue.js", "JavaScript", "jQuery Migration"],
-    link: "https://github.com/Countly",
-  },
-  {
-    project: "TEAMMATES",
-    role: "Multiple Contributor",
-    period: "December 2017 - May 2018",
-    description:
-      "Active contributor to TEAMMATES, an online peer evaluation/feedback tool used by educational institutions globally.",
-    contributions: [
-      "Fixed critical bugs in student submission flow",
-      "Enhanced UI/UX for feedback forms",
-      "Improved test coverage",
-      "Documentation improvements",
-    ],
-    tags: ["Java", "JavaScript", "Education Tech"],
-    link: "https://github.com/TEAMMATES",
-  },
-  {
-    project: "Processing Foundation",
-    role: "Processing Fellowship 2019",
-    period: "March 2019 - May 2019",
-    description:
-      "Selected for prestigious Processing Fellowship to contribute to creative coding community and tools.",
-    contributions: [
-      "Developed educational resources",
-      "Contributed to Processing documentation",
-      "Community engagement and mentorship",
-      "Workshop facilitation",
-    ],
-    tags: ["Processing", "Creative Coding", "Education"],
-    link: "https://processingfoundation.org/",
-  },
-];
-
 export const OpenSource = () => {
   return (
-    <section id="opensource" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="opensource" className="py-24 relative bg-background overflow-hidden">
+      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-[100px] animate-pulse"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display tracking-tight hover:scale-105 transition-transform duration-500">
             Open Source Contributions
           </h2>
 
@@ -80,88 +19,70 @@ export const OpenSource = () => {
             Contributing to the developer community and open source ecosystem
           </p>
 
-          <div className="space-y-8">
-            {contributions.map((contrib, index) => {
+          <div className="grid md:grid-cols-2 gap-8">
+            {openSourceContributions.map((contrib, index) => {
               const { ref, isVisible } = useScrollReveal();
               return (
-                <Card
+                <div
                   key={index}
                   ref={ref}
-                  className={`p-8 shadow-soft hover:shadow-elegant transition-all duration-500 hover-lift elegant-border bg-gradient-card ${
-                    isVisible ? 'animate-slide-in-right' : 'opacity-0'
-                  }`}
+                  className={`glass-panel p-8 rounded-3xl hover:-translate-y-2 transition-all duration-500 card-hover-3d relative group ${isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                    }`}
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Github className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-semibold">{contrib.project}</h3>
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                        <Github className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-bold font-display">{contrib.project}</h3>
                     </div>
-                    <p className="text-lg font-medium text-foreground mb-1">
-                      {contrib.role}
-                    </p>
-                    <p className="text-muted-foreground">{contrib.period}</p>
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    className="mt-4 md:mt-0"
-                    asChild
-                  >
                     <a
                       href={contrib.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      <Github className="mr-2 h-4 w-4" />
-                      View Project
+                      <GitFork className="w-5 h-5" />
                     </a>
-                  </Button>
-                </div>
+                  </div>
 
-                <p className="text-foreground/80 mb-6 leading-relaxed font-light">
-                  {contrib.description}
-                </p>
+                  <p className="text-primary font-medium mb-1">{contrib.role}</p>
+                  <p className="text-sm text-muted-foreground mb-4">{contrib.period}</p>
 
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold mb-3 flex items-center gap-2 text-foreground/70">
-                    <GitFork className="w-4 h-4" />
-                    Key Contributions:
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    {contrib.contributions.map((contribution, idx) => (
-                      <div key={idx} className="flex items-start">
+                  <p className="text-foreground/80 mb-6 leading-relaxed font-light line-clamp-3">
+                    {contrib.description}
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    {contrib.contributions.slice(0, 2).map((contribution, idx) => (
+                      <div key={idx} className="flex items-start text-sm text-foreground/70">
                         <Star className="w-4 h-4 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-foreground/80">
-                          {contribution}
-                        </span>
+                        <span>{contribution}</span>
                       </div>
                     ))}
                   </div>
-                </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {contrib.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="outline">
-                      {tag}
-                    </Badge>
-                  ))}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {contrib.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="px-3 py-1 bg-secondary/10 text-secondary-foreground text-xs font-medium rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </Card>
               );
             })}
           </div>
 
-          <div className="mt-12 text-center">
-            <Card className="p-8 bg-gradient-hero text-white inline-block animate-gradient shadow-glow hover:shadow-medium transition-all duration-500">
-              <p className="text-lg mb-4 font-light">
+          <div className="mt-16 text-center">
+            <div className="glass-panel inline-block p-8 rounded-[2rem] bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+              <p className="text-lg mb-6 font-light">
                 Interested in collaborating on open source projects?
               </p>
               <Button
-                variant="secondary"
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white hover:scale-105 transition-all duration-300"
+                className="rounded-full shadow-glow hover:shadow-elegant hover:scale-105 transition-all duration-300"
                 asChild
               >
                 <a
@@ -173,7 +94,7 @@ export const OpenSource = () => {
                   Follow on GitHub
                 </a>
               </Button>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
