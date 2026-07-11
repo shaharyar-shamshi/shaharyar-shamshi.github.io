@@ -1,55 +1,64 @@
-import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github } from "lucide-react";
+import { Reveal } from "./Reveal";
+import { siteConfig } from "@/data/resume";
+
+const EMAIL = "shaharyarshamshi@gmail.com";
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-background to-accent/90 dark:from-primary/20 dark:via-background dark:to-accent/20 animate-gradient"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2djEyaDEyVjE2SDM2ek0xMiAxNnYxMmgxMlYxNkgxMnpNMzYgNDB2MTJoMTJWNDBIMzZ6TTEyIDQwdjEyaDEyVjQwSDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
+    <section id="contact" className="section border-t border-border">
+      <div className="section-inner">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card px-6 py-16 text-center md:px-12 md:py-24">
+            <div className="pointer-events-none absolute inset-0 dot-grid" aria-hidden />
+            <div className="relative mx-auto max-w-prose">
+              <span className="eyebrow justify-center">
+                <span className="h-px w-6 bg-brand" aria-hidden />
+                Contact
+              </span>
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
+                Let&apos;s build something that matters.
+              </h2>
+              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+                Interested in renewable energy, technology, or a collaboration? I&apos;d love to hear
+                from you.
+              </p>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-            Let's Connect
-          </h2>
-
-          <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-            Interested in renewable energy, technology, or collaboration opportunities?
-          </p>
-
-          <div className="glass-panel p-8 md:p-12 rounded-[2rem] border-white/20 bg-white/10 dark:bg-black/30 backdrop-blur-xl shadow-2xl">
-            <div className="flex gap-4 justify-center">
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-white rounded-xl h-12 px-6 hover:scale-105 transition-all"
-                asChild
-              >
-                <a href="https://www.linkedin.com/in/shaharyarshamshi/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="mr-2 h-5 w-5" />
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  <Mail className="h-4 w-4" />
+                  {EMAIL}
+                </a>
+                <a
+                  href={siteConfig.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 items-center gap-2 rounded-lg border border-border px-5 text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-accent"
+                >
+                  <Linkedin className="h-4 w-4" />
                   LinkedIn
                 </a>
-              </Button>
-
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white/10 border-white/20 hover:bg-white/20 text-white rounded-xl h-12 px-6 hover:scale-105 transition-all"
-                asChild
-              >
-                <a href="https://github.com/shaharyar-shamshi" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-5 w-5" />
+                <a
+                  href={siteConfig.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 items-center gap-2 rounded-lg border border-border px-5 text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-accent"
+                >
+                  <Github className="h-4 w-4" />
                   GitHub
                 </a>
-              </Button>
+              </div>
             </div>
           </div>
+        </Reveal>
 
-          <p className="text-white/60 mt-12 text-sm font-light">
-            © 2025 Shaharyar Shamshi. Building a sustainable future through technology.
-          </p>
-        </div>
+        <footer className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
+          <p>© {new Date().getFullYear()} Shaharyar Shamshi</p>
+          <p className="font-mono text-xs">Building a sustainable future through technology.</p>
+        </footer>
       </div>
     </section>
   );

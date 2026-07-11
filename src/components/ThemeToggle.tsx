@@ -1,41 +1,28 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    return (
-      <Button
-        variant="outline"
-        size="icon"
-        className="rounded-full backdrop-blur-sm shadow-elegant"
-      >
-        <Sun className="h-5 w-5" />
-      </Button>
-    );
-  }
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="rounded-full backdrop-blur-sm shadow-elegant hover:shadow-glow transition-all duration-300 hover:scale-110"
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+      aria-label="Toggle theme"
     >
-      {theme === "dark" ? (
-        <Sun className="h-5 w-5" />
+      {mounted && isDark ? (
+        <Sun className="h-[1.15rem] w-[1.15rem]" />
       ) : (
-        <Moon className="h-5 w-5" />
+        <Moon className="h-[1.15rem] w-[1.15rem]" />
       )}
       <span className="sr-only">Toggle theme</span>
-    </Button>
+    </button>
   );
 }

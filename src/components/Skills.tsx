@@ -1,63 +1,56 @@
+import { Code2, Database, Layout, Server, Cloud, Terminal, Cpu } from "lucide-react";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
 import { skillCategories } from "@/data/resume";
-import { Code2, Database, Layout, Server, Cloud, Cpu, Terminal } from "lucide-react";
+
+const iconFor = (category: string) => {
+  switch (category.toLowerCase()) {
+    case "languages": return Code2;
+    case "frontend": return Layout;
+    case "backend": return Server;
+    case "database": return Database;
+    case "cloud & devops": return Cloud;
+    case "tools": return Terminal;
+    default: return Cpu;
+  }
+};
 
 export const Skills = () => {
-  const getIcon = (category: string) => {
-    switch (category.toLowerCase()) {
-      case "languages": return Code2;
-      case "frontend": return Layout;
-      case "backend": return Server;
-      case "database": return Database;
-      case "cloud & devops": return Cloud;
-      case "tools": return Terminal;
-      default: return Cpu;
-    }
-  };
-
   return (
-    <section id="skills" className="py-24 relative overflow-hidden bg-background">
-      <div className="absolute left-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+    <section id="skills" className="section border-t border-border">
+      <div className="section-inner">
+        <SectionHeader
+          eyebrow="Toolkit"
+          title="The stack I build with"
+          subtitle="End-to-end — from interface to infrastructure."
+        />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display tracking-tight">
-            Tech Architecture
-          </h2>
-          <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and toolbelt
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((categoryGroup, index) => {
-            const Icon = getIcon(categoryGroup.category);
-
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((group, i) => {
+            const Icon = iconFor(group.category);
             return (
-              <div
-                key={index}
-                className="glass-panel p-8 rounded-3xl hover:border-primary/30 transition-all duration-300 card-hover-3d group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
-                    <Icon className="w-6 h-6 text-primary" />
+              <Reveal key={group.category} delay={(i % 3) * 70}>
+                <div className="surface surface-hover h-full p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 place-items-center rounded-lg bg-secondary text-foreground">
+                      <Icon className="h-[1.1rem] w-[1.1rem]" />
+                    </div>
+                    <h3 className="text-sm font-semibold uppercase tracking-wide">
+                      {group.category}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold font-display tracking-tight">
-                    {categoryGroup.category}
-                  </h3>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-md bg-secondary px-2.5 py-1 font-mono text-xs text-secondary-foreground"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {categoryGroup.items.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1.5 bg-secondary/5 text-secondary-foreground text-sm font-medium rounded-lg border border-secondary/10 hover:bg-primary/10 hover:border-primary/20 hover:text-primary transition-all duration-300 cursor-default hover:-translate-y-0.5"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

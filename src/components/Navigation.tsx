@@ -1,107 +1,124 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Open Source", href: "#opensource" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "about" },
+  { name: "Experience", href: "experience" },
+  { name: "Skills", href: "skills" },
+  { name: "Projects", href: "projects" },
+  { name: "Open Source", href: "opensource" },
+  { name: "Contact", href: "contact" },
 ];
 
 export const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.href))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5] }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  const go = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-5xl rounded-full border ${isScrolled
-        ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-elegant border-white/20 dark:border-white/10"
-        : "bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-transparent shadow-none"
-        } px-6`}
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled
+          ? "border-b border-border bg-background/80 backdrop-blur-md"
+          : "border-b border-transparent"
+      )}
     >
-      <div className="flex items-center justify-between h-16">
-        {/* Logo/Name */}
+      <nav className="container mx-auto flex h-16 items-center justify-between px-6">
         <button
-          onClick={() => scrollToSection("#hero")}
-          className="text-xl font-display font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity whitespace-nowrap"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="group flex items-center gap-2 font-display text-sm font-semibold tracking-tight"
         >
-          Shaharyar Shamshi
+          <span className="grid h-7 w-7 place-items-center rounded-md bg-primary font-mono text-xs text-primary-foreground">
+            SS
+          </span>
+          <span className="hidden sm:inline">Shaharyar Shamshi</span>
         </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <Button
-              key={item.name}
-              variant="ghost"
-              onClick={() => scrollToSection(item.href)}
-              className="font-medium text-sm rounded-full hover:bg-primary/10 hover:text-primary transition-colors h-9 px-4"
+            <button
+              key={item.href}
+              onClick={() => go(item.href)}
+              className={cn(
+                "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                active === item.href
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
             >
               {item.name}
-            </Button>
+              {active === item.href && (
+                <span className="absolute inset-x-3 -bottom-px h-px bg-brand" />
+              )}
+            </button>
           ))}
-          <div className="ml-auto pl-2 border-l border-border/50">
+          <div className="ml-2 pl-2">
             <ThemeToggle />
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="flex items-center gap-1 md:hidden">
           <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="rounded-full"
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="grid h-9 w-9 place-items-center rounded-md text-foreground hover:bg-accent"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl animate-fade-in-up md:hidden">
-          <div className="flex flex-col gap-2">
+      {mobileOpen && (
+        <div className="border-t border-border bg-background md:hidden">
+          <div className="container mx-auto flex flex-col px-6 py-2">
             {navItems.map((item) => (
-              <Button
-                key={item.name}
-                variant="ghost"
-                onClick={() => scrollToSection(item.href)}
-                className="justify-start font-medium rounded-xl h-12"
+              <button
+                key={item.href}
+                onClick={() => go(item.href)}
+                className="py-3 text-left text-sm font-medium text-muted-foreground hover:text-foreground"
               >
                 {item.name}
-              </Button>
+              </button>
             ))}
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };

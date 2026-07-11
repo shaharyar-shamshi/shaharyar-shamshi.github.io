@@ -1,54 +1,52 @@
-import { Badge } from "@/components/ui/badge";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
 import { experiences } from "@/data/resume";
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-24 bg-background relative">
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+    <section id="experience" className="section border-t border-border">
+      <div className="section-inner">
+        <SectionHeader
+          eyebrow="Experience"
+          title="A decade of shipping across industries"
+          subtitle="Fintech, EdTech, developer tools, SaaS, and renewable energy — front to back."
+        />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 font-display">
-            Experience
-          </h2>
+        <div className="relative max-w-4xl">
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-border md:left-[7.5rem]" aria-hidden />
 
-          <p className="text-xl text-muted-foreground text-center mb-16">
-            Building impactful products across industries
-          </p>
+          <div className="space-y-10">
+            {experiences.map((exp, i) => (
+              <Reveal key={`${exp.company}-${i}`} delay={Math.min(i, 4) * 60}>
+                <div className="relative grid gap-4 pl-8 md:grid-cols-[7.5rem_1fr] md:gap-8 md:pl-0">
+                  {/* Period rail */}
+                  <div className="md:pr-8 md:text-right">
+                    <p className="font-mono text-xs leading-relaxed text-muted-foreground">
+                      {exp.period}
+                    </p>
+                    <p className="mt-1 font-mono text-[0.7rem] text-muted-foreground/70">
+                      {exp.location}
+                    </p>
+                  </div>
 
-          <div className="relative">
-            <div className="absolute left-0 md:left-8 top-4 bottom-4 w-px bg-gradient-to-b from-primary via-secondary to-transparent opacity-30"></div>
+                  {/* Node */}
+                  <span
+                    className="absolute left-[-4px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-brand md:left-[7.5rem] md:-translate-x-[calc(50%+0.5px)]"
+                    aria-hidden
+                  />
 
-            <div className="space-y-12">
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-8 md:pl-20 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-                  <div className="absolute left-[-4px] md:left-[28px] top-6 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-background shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div>
-
-                  <div className="glass-panel p-8 rounded-3xl hover:border-primary/20 transition-all duration-300 group">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">
-                          {exp.company}
-                        </h3>
-                        <p className="text-lg font-medium text-foreground">
-                          {exp.role}
-                        </p>
-                      </div>
-                      <div className="text-muted-foreground mt-2 md:mt-0 md:text-right text-sm">
-                        <p className="font-medium text-foreground/80">{exp.period}</p>
-                        <p>{exp.location}</p>
-                      </div>
-                    </div>
-
-                    <p className="text-foreground/80 mb-6 leading-relaxed">
+                  {/* Content */}
+                  <div className="md:pl-2">
+                    <h3 className="text-lg font-semibold tracking-tight">{exp.role}</h3>
+                    <p className="text-sm font-medium text-brand">{exp.company}</p>
+                    <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">
                       {exp.description}
                     </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tags.map((tag, tagIndex) => (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {exp.tags.map((tag) => (
                         <span
-                          key={tagIndex}
-                          className="px-3 py-1 bg-secondary/5 text-secondary-foreground text-xs font-medium rounded-full border border-secondary/10"
+                          key={tag}
+                          className="rounded-md border border-border px-2 py-0.5 font-mono text-[0.7rem] text-muted-foreground"
                         >
                           {tag}
                         </span>
@@ -56,8 +54,8 @@ export const Experience = () => {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>
