@@ -17,7 +17,7 @@ const iconFor = (category: string) => {
 
 export const Skills = () => {
   return (
-    <section id="skills" className="section border-t border-border">
+    <section id="skills" className="section border-t border-foreground/80">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Toolkit"

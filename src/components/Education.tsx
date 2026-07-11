@@ -8,7 +8,7 @@ export const Education = () => {
   const recognition = education.find((e) => e.type === "Recognition");
 
   return (
-    <section id="education" className="section border-t border-border">
+    <section id="education" className="section border-t border-foreground/80">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Background"

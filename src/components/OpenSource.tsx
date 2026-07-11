@@ -5,7 +5,7 @@ import { openSourceContributions } from "@/data/resume";
 
 export const OpenSource = () => {
   return (
-    <section id="opensource" className="section border-t border-border">
+    <section id="opensource" className="section border-t border-foreground/80">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Community"

@@ -2,39 +2,25 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 
 interface SectionHeaderProps {
-  /** Small monospace label above the title. */
+  /** Small condensed label set between rules. */
   eyebrow: string;
   title: string;
   subtitle?: string;
-  align?: "left" | "center";
   className?: string;
 }
 
-/** Consistent eyebrow + title + subtitle rhythm across all sections. */
-export const SectionHeader = ({
-  eyebrow,
-  title,
-  subtitle,
-  align = "left",
-  className,
-}: SectionHeaderProps) => {
+/** Newspaper section divider: ─── KICKER ─── over a serif headline. */
+export const SectionHeader = ({ eyebrow, title, subtitle, className }: SectionHeaderProps) => {
   return (
-    <Reveal
-      className={cn(
-        "mb-12 md:mb-16 max-w-prose",
-        align === "center" && "mx-auto text-center",
-        className
-      )}
-    >
-      <span className="eyebrow">
-        <span className="h-px w-6 bg-brand" aria-hidden />
-        {eyebrow}
-      </span>
-      <h2 className="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">
+    <Reveal className={cn("mb-10 text-center md:mb-12", className)}>
+      <div className="divider mx-auto max-w-md">
+        <span className="eyebrow">{eyebrow}</span>
+      </div>
+      <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-base md:text-lg leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-3 max-w-prose font-display text-base italic leading-snug text-muted-foreground md:text-lg">
           {subtitle}
         </p>
       )}

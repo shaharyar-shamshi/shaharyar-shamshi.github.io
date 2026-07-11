@@ -5,44 +5,23 @@ import { githubStats, featuredRepos } from "@/data/resume";
 
 export const GitHubProfile = () => {
   return (
-    <section id="github" className="section border-t border-border">
-      <div className="section-inner">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeader
-            eyebrow="Open Source Activity"
-            title="Building in the open"
-            subtitle="An active contributor to the developer community."
-            className="mb-0"
-          />
-          <Reveal>
-            <a
-              href="https://github.com/shaharyar-shamshi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 items-center gap-2 rounded-lg border border-border px-4 text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-accent"
-            >
-              <Github className="h-4 w-4" />
-              View profile
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </Reveal>
-        </div>
+    <section id="github" className="section border-t border-foreground/80">
+      <div className="section-inner max-w-content">
+        <SectionHeader
+          eyebrow="By the Numbers"
+          title="Building in the open"
+          subtitle="An active contributor to the tools and libraries developers rely on."
+        />
 
-        {/* Stat tiles */}
-        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {githubStats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 60}>
-              <div className="surface p-6">
-                <div className="font-mono text-3xl font-semibold tracking-tight md:text-4xl">
-                  {stat.value}
-                </div>
-                <div className="mt-2 text-xs uppercase tracking-wide text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            </Reveal>
+        {/* Stat strip */}
+        <Reveal className="grid grid-cols-2 divide-x divide-y divide-border border border-border md:grid-cols-4 md:divide-y-0">
+          {githubStats.map((stat) => (
+            <div key={stat.label} className="px-6 py-6 text-center">
+              <div className="font-mono text-4xl font-bold md:text-5xl">{stat.value}</div>
+              <div className="mt-2 mono-tag">{stat.label}</div>
+            </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* Featured repos */}
         <div className="mt-4 grid gap-4 md:grid-cols-3">
@@ -54,17 +33,17 @@ export const GitHubProfile = () => {
                 rel="noopener noreferrer"
                 className="surface surface-hover group flex h-full flex-col p-6"
               >
-                <div className="flex items-center justify-between">
-                  <Github className="h-5 w-5 text-muted-foreground" />
+                <div className="flex items-center justify-between border-b border-border pb-3">
+                  <span className="mono-tag">Repository</span>
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
-                <h3 className="mt-4 font-semibold tracking-tight">{repo.name}</h3>
+                <h3 className="mt-4 font-display text-lg font-bold">{repo.name}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {repo.description}
                 </p>
-                <div className="mt-5 flex items-center gap-4 font-mono text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand" />
+                <div className="mt-5 flex items-center gap-4 mono-tag">
+                  <span className="flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 bg-brand" />
                     {repo.language}
                   </span>
                   <span className="flex items-center gap-1">
@@ -80,6 +59,19 @@ export const GitHubProfile = () => {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-8 text-center">
+          <a
+            href="https://github.com/shaharyar-shamshi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 items-center gap-2 border border-foreground/60 px-6 font-mono text-sm font-medium uppercase tracking-wide transition-colors hover:bg-accent"
+          >
+            <Github className="h-4 w-4" />
+            Read the full profile
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );

@@ -3,86 +3,84 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------
-   Design system — Editorial minimal with a technical edge.
-   Neutral-led, one signature accent (solar amber via --brand).
+   Design system — Broadsheet newspaper.
+   Cream newsprint, warm ink, editorial-red accent, hairline rules,
+   high-contrast serif headlines. "Night Edition" = dark mode.
    All colors are HSL. shadcn semantic tokens preserved.
 ------------------------------------------------------------------ */
 
 @layer base {
   :root {
-    /* Canvas & ink */
-    --background: 40 33% 98%;
-    --foreground: 24 12% 10%;
+    /* Newsprint & ink */
+    --background: 42 30% 95%;
+    --foreground: 28 14% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 24 12% 10%;
+    --card: 44 34% 97%;
+    --card-foreground: 28 14% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 24 12% 10%;
+    --popover: 44 34% 97%;
+    --popover-foreground: 28 14% 12%;
 
-    /* Primary = near-black ink (editorial buttons) */
-    --primary: 24 12% 12%;
-    --primary-foreground: 40 33% 98%;
+    /* Primary = ink black */
+    --primary: 28 16% 12%;
+    --primary-foreground: 44 34% 96%;
 
-    /* Secondary / muted = quiet neutrals */
-    --secondary: 36 16% 94%;
-    --secondary-foreground: 24 10% 22%;
+    --secondary: 40 20% 89%;
+    --secondary-foreground: 28 14% 20%;
 
-    --muted: 36 16% 95%;
-    --muted-foreground: 28 6% 44%;
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 8% 38%;
 
-    /* shadcn accent stays neutral (component hover states) */
-    --accent: 36 18% 92%;
-    --accent-foreground: 24 12% 14%;
+    --accent: 40 22% 87%;
+    --accent-foreground: 28 14% 14%;
 
-    --destructive: 0 72% 48%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 65% 42%;
+    --destructive-foreground: 44 34% 96%;
 
-    --border: 30 12% 88%;
-    --input: 30 12% 88%;
-    --ring: 30 90% 48%;
+    --border: 30 14% 76%;
+    --input: 30 14% 76%;
+    --ring: 5 62% 40%;
 
-    /* Signature accent — solar amber */
-    --brand: 30 90% 48%;
-    --brand-foreground: 24 20% 8%;
-    --brand-muted: 34 92% 55%;
+    /* Editorial red accent */
+    --brand: 5 62% 40%;
+    --brand-foreground: 44 34% 96%;
+    --brand-muted: 5 55% 48%;
 
-    --radius: 0.75rem;
+    --radius: 0rem;
   }
 
   .dark {
-    --background: 24 12% 7%;
-    --foreground: 40 24% 95%;
+    --background: 30 8% 9%;
+    --foreground: 42 22% 88%;
 
-    --card: 24 10% 10%;
-    --card-foreground: 40 24% 95%;
+    --card: 30 8% 11%;
+    --card-foreground: 42 22% 88%;
 
-    --popover: 24 10% 10%;
-    --popover-foreground: 40 24% 95%;
+    --popover: 30 8% 11%;
+    --popover-foreground: 42 22% 88%;
 
-    /* Primary = near-white in dark */
-    --primary: 40 30% 96%;
-    --primary-foreground: 24 12% 9%;
+    --primary: 42 24% 90%;
+    --primary-foreground: 30 8% 10%;
 
-    --secondary: 24 8% 15%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 30 6% 16%;
+    --secondary-foreground: 42 18% 82%;
 
-    --muted: 24 8% 15%;
-    --muted-foreground: 30 8% 62%;
+    --muted: 30 6% 16%;
+    --muted-foreground: 40 8% 60%;
 
-    --accent: 24 8% 17%;
-    --accent-foreground: 40 24% 95%;
+    --accent: 30 6% 18%;
+    --accent-foreground: 42 22% 88%;
 
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 42 22% 92%;
 
-    --border: 30 8% 20%;
-    --input: 30 8% 20%;
-    --ring: 32 95% 58%;
+    --border: 34 8% 26%;
+    --input: 34 8% 26%;
+    --ring: 6 72% 58%;
 
-    --brand: 32 95% 58%;
-    --brand-foreground: 24 20% 8%;
-    --brand-muted: 34 92% 62%;
+    --brand: 6 72% 58%;
+    --brand-foreground: 30 8% 8%;
+    --brand-muted: 6 62% 64%;
   }
 }
 
@@ -97,11 +95,11 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    font-feature-settings: "onum", "liga", "kern";
   }
 
   ::selection {
-    background: hsl(var(--brand) / 0.25);
+    background: hsl(var(--brand) / 0.22);
   }
 
   h1,
@@ -111,56 +109,42 @@
   h5,
   h6 {
     @apply font-display;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     text-wrap: balance;
-  }
-
-  h1 {
-    letter-spacing: -0.035em;
   }
 
   :focus-visible {
     outline: 2px solid hsl(var(--brand));
     outline-offset: 2px;
-    border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Consistent section rhythm */
   .section {
-    @apply py-20 md:py-28;
+    @apply py-16 md:py-20;
   }
 
   .section-inner {
     @apply container mx-auto px-6;
   }
 
-  /* Editorial card: hairline border, soft surface, subtle lift */
+  /* Article box — hairline border, square corners */
   .surface {
-    @apply rounded-xl border border-border bg-card;
+    @apply border border-border bg-card;
   }
 
   .surface-hover {
-    @apply transition-colors duration-300 hover:border-foreground/25;
+    @apply transition-colors duration-200 hover:border-foreground/50;
   }
 
-  /* Eyebrow label */
+  /* Condensed uppercase kicker / section label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground;
+    @apply inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand;
   }
 
-  /* Monospace metadata / tags */
+  /* Condensed metadata: datelines, tags, numbers */
   .mono-tag {
-    @apply font-mono text-[0.7rem] tracking-tight text-muted-foreground;
-  }
-
-  /* Quiet dot-grid backdrop */
-  .dot-grid {
-    background-image: radial-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 1px);
-    background-size: 22px 22px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+    @apply font-mono text-xs uppercase tracking-wide text-muted-foreground;
   }
 }
 
@@ -169,23 +153,66 @@
     color: hsl(var(--brand));
   }
 
-  /* Amber underline that grows on hover — for text links */
-  .link-underline {
-    background-image: linear-gradient(hsl(var(--brand)), hsl(var(--brand)));
-    background-size: 0% 1.5px;
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    transition: background-size 0.3s ease;
+  /* Rules */
+  .rule {
+    border-top: 1px solid hsl(var(--foreground) / 0.85);
   }
 
-  .link-underline:hover {
-    background-size: 100% 1.5px;
+  .rule-hair {
+    border-top: 1px solid hsl(var(--foreground) / 0.28);
   }
 
-  /* Scroll reveal (see <Reveal/>) */
+  .rule-double {
+    border-top: 3px double hsl(var(--foreground) / 0.85);
+  }
+
+  /* Section divider label: ─── LABEL ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid hsl(var(--foreground) / 0.28);
+  }
+
+  /* Multi-column body text with a column rule */
+  .news-columns {
+    column-gap: 2.25rem;
+    column-rule: 1px solid hsl(var(--border));
+  }
+
+  @media (min-width: 768px) {
+    .news-columns {
+      columns: 2;
+    }
+  }
+
+  .justify-text {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+
+  /* Drop cap on the opening paragraph */
+  .dropcap::first-letter {
+    float: left;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 800;
+    font-size: 3.4em;
+    line-height: 0.74;
+    padding: 0.05em 0.1em 0 0;
+    color: hsl(var(--brand));
+  }
+
+  /* Scroll reveal */
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
     transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;

@@ -4,7 +4,7 @@ import { experiences } from "@/data/resume";
 
 export const Experience = () => {
   return (
-    <section id="experience" className="section border-t border-border">
+    <section id="experience" className="section border-t border-foreground/80">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Experience"
@@ -31,7 +31,7 @@ export const Experience = () => {
 
                   {/* Node */}
                   <span
-                    className="absolute left-[-4px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-brand md:left-[7.5rem] md:-translate-x-[calc(50%+0.5px)]"
+                    className="absolute left-[-5px] top-1.5 h-2.5 w-2.5 border border-background bg-brand md:left-[7.5rem] md:-translate-x-[calc(50%+0.5px)]"
                     aria-hidden
                   />
 

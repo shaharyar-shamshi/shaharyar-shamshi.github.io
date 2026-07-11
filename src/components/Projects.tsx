@@ -4,7 +4,7 @@ import { projects } from "@/data/resume";
 
 export const Projects = () => {
   return (
-    <section id="projects" className="section border-t border-border">
+    <section id="projects" className="section border-t border-foreground/80">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Selected Work"

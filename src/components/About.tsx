@@ -22,38 +22,39 @@ const principles = [
 ];
 
 export const About = () => {
+  const [lead, ...rest] = siteConfig.about.bio;
+
   return (
-    <section id="about" className="section">
-      <div className="section-inner">
-        <SectionHeader
-          eyebrow="About"
-          title="Building the future of renewable energy through technology"
-        />
+    <section id="about" className="section border-t border-foreground/80">
+      <div className="section-inner max-w-content">
+        <SectionHeader eyebrow="The Profile" title={siteConfig.about.tagline} />
 
-        <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr]">
-          <Reveal className="max-w-prose space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
-            {siteConfig.about.bio.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
-          </Reveal>
+        <Reveal
+          className="news-columns text-[0.975rem] leading-relaxed text-foreground/90 justify-text lg:[columns:3]"
+          as="div"
+        >
+          <p className="dropcap">{lead}</p>
+          {rest.map((paragraph, i) => (
+            <p key={i} className="mt-4">
+              {paragraph}
+            </p>
+          ))}
+        </Reveal>
 
-          <div className="space-y-4">
-            {principles.map((p, i) => (
-              <Reveal key={p.title} delay={i * 80}>
-                <div className="surface surface-hover flex gap-4 p-5">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand/10 text-brand">
-                    <p.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold tracking-tight">{p.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                      {p.description}
-                    </p>
-                  </div>
+        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-3">
+          {principles.map((p, i) => (
+            <Reveal key={p.title} delay={i * 80} className="bg-card">
+              <div className="h-full p-6">
+                <div className="flex items-center gap-3">
+                  <p.icon className="h-5 w-5 text-brand" />
+                  <h3 className="font-display text-lg font-bold">{p.title}</h3>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
