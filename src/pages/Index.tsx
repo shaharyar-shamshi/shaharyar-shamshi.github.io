@@ -8,6 +8,7 @@ import { GitHubProfile } from "@/components/GitHubProfile";
 import { OpenSource } from "@/components/OpenSource";
 import { Education } from "@/components/Education";
 import { Contact } from "@/components/Contact";
+import { BackToTop } from "@/components/BackToTop";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       <OpenSource />
       <Education />
       <Contact />
+      <BackToTop />
     </div>
   );
 };

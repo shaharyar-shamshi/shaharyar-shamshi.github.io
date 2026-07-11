@@ -9,10 +9,22 @@ const today = new Date().toLocaleDateString("en-US", {
   day: "numeric",
 });
 
+const inside = [
+  { name: "The Profile", href: "about", pg: "02" },
+  { name: "Experience", href: "experience", pg: "03" },
+  { name: "Toolkit", href: "skills", pg: "04" },
+  { name: "Selected Work", href: "projects", pg: "05" },
+  { name: "Open Source", href: "opensource", pg: "06" },
+  { name: "Contact", href: "contact", pg: "08" },
+];
+
+const scrollTo = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
 export const Hero = () => {
   return (
     <section id="hero" className="pt-20">
-      <div className="section-inner max-w-content">
+      <div className="section-inner max-w-content paper-in">
         {/* Masthead utility row */}
         <div className="rule flex flex-wrap items-center justify-between gap-2 py-2 mono-tag">
           <span>{today}</span>
@@ -20,17 +32,46 @@ export const Hero = () => {
           <span>shaharyarshamshi.com</span>
         </div>
 
-        {/* Nameplate */}
-        <div className="border-y-2 border-foreground py-6 text-center md:py-8">
-          <h1 className="font-display text-5xl font-black leading-none tracking-tight sm:text-7xl md:text-8xl">
-            Shaharyar Shamshi
-          </h1>
+        {/* Nameplate with ears */}
+        <div className="border-y-2 border-foreground py-5 md:py-7">
+          <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-[8rem_1fr_8rem]">
+            <div className="hidden border border-border px-3 py-2 text-center md:block">
+              <p className="mono-tag">Established</p>
+              <p className="font-display text-lg font-bold leading-tight">MMXIX</p>
+              <p className="mono-tag">Delhi, IN</p>
+            </div>
+
+            <h1 className="text-center font-display text-5xl font-black leading-none tracking-tight sm:text-7xl md:text-8xl">
+              Shaharyar Shamshi
+            </h1>
+
+            <div className="hidden border border-border px-3 py-2 text-center md:block">
+              <p className="mono-tag">Edition</p>
+              <p className="font-display text-lg font-bold leading-tight">Portfolio</p>
+              <p className="mono-tag">Price · Free</p>
+            </div>
+          </div>
         </div>
-        <div className="rule-double mt-[3px] flex items-center justify-center py-2">
-          <p className="mono-tag tracking-[0.35em]">
+        <div className="rule-double mt-[3px] py-2">
+          <p className="ornament mono-tag !text-foreground tracking-[0.32em]">
             Technology &middot; Renewable Energy &middot; Software Engineering
           </p>
         </div>
+
+        {/* Inside this issue */}
+        <nav className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 border-y border-foreground/80 py-2">
+          <span className="eyebrow">Inside</span>
+          {inside.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollTo(item.href)}
+              className="group flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {item.name}
+              <span className="text-brand">{item.pg}</span>
+            </button>
+          ))}
+        </nav>
 
         {/* Lead story */}
         <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-3">
@@ -44,11 +85,13 @@ export const Hero = () => {
               focus to forecasting and predictive monitoring for the grid.
             </p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 rule-hair pt-3 mono-tag">
-              <span className="text-foreground">By Shaharyar Shamshi</span>
+            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 rule-hair pt-3 mono-tag">
+              <span className="smallcaps text-sm normal-case tracking-normal text-foreground">
+                By Shaharyar Shamshi
+              </span>
               <span aria-hidden>&mdash;</span>
               <span>HelioExpect, Delhi</span>
-            </div>
+            </p>
 
             <div className="news-columns mt-5 text-[0.975rem] leading-relaxed text-foreground/90 justify-text">
               <p className="dropcap">
@@ -63,7 +106,12 @@ export const Hero = () => {
               </p>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <blockquote className="pullquote my-6 py-4 text-center text-xl leading-tight md:text-2xl">
+              &ldquo;Reduce grid penalties, integrate with national power infrastructure, and
+              accelerate the transition.&rdquo;
+            </blockquote>
+
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href="mailto:shaharyarshamshi@gmail.com"
                 className="inline-flex h-11 items-center gap-2 bg-primary px-5 font-mono text-sm font-medium uppercase tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
@@ -94,7 +142,7 @@ export const Hero = () => {
 
           {/* Portrait column */}
           <figure className="md:pt-6">
-            <div className="border border-foreground/70 p-1.5">
+            <div className="halftone border border-foreground/70 p-1.5">
               <img
                 src={profilePhoto}
                 alt="Shaharyar Shamshi"

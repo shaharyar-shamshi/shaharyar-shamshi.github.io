@@ -41,7 +41,14 @@ export const About = () => {
           ))}
         </Reveal>
 
-        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-3">
+        <Reveal className="mx-auto my-12 max-w-3xl">
+          <blockquote className="pullquote py-5 text-center text-2xl leading-tight md:text-3xl">
+            &ldquo;Building systems that scale &mdash; and that move the energy transition
+            forward.&rdquo;
+          </blockquote>
+        </Reveal>
+
+        <div className="grid gap-px border border-border bg-border sm:grid-cols-3">
           {principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 80} className="bg-card">
               <div className="h-full p-6">
