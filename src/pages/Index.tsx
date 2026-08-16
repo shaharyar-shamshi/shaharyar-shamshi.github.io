@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { ClientLogos } from "@/components/ClientLogos";
 import { About } from "@/components/About";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
@@ -16,6 +17,7 @@ const Index = () => {
       <Navigation />
       <main className="scroll-snap-host">
         <Hero />
+        <ClientLogos />
         <About />
         <Experience />
         <Skills />

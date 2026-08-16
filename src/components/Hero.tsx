@@ -3,9 +3,10 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 import { siteConfig } from "@/data/resume";
 
 const stats = [
-  ["Experience", "5+ years"],
+  ["Experience", "6+ years"],
   ["Focus", "Renewable energy"],
   ["Discipline", "Full-stack"],
+  ["Scale", "4+ GW · 30+ sites"],
 ];
 
 export const Hero = () => {
@@ -21,7 +22,7 @@ export const Hero = () => {
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              {siteConfig.hero.tagline} A full-stack engineer with 5+ years across fintech,
+              {siteConfig.hero.tagline} A full-stack engineer with 6+ years across fintech,
               developer tools and SaaS, now focused on forecasting and predictive monitoring
               for the grid.
             </p>

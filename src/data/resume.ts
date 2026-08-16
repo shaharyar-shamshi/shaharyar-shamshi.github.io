@@ -14,8 +14,8 @@ export const siteConfig = {
   about: {
     tagline: "Building the future of renewable energy through technology",
     bio: [
-      "As Co-Founder and CTO at HelioExpect (Incubated by AIC-IIITH, IIIT Hyderabad), I'm leading the development of cutting-edge forecasting and predictive monitoring tools that empower renewable energy producers. Our mission is to reduce grid penalties and enable seamless integration with national power infrastructure, accelerating renewable energy adoption and strengthening the resilience of our energy systems.",
-      "With over 5 years of professional experience as a Full-Stack Engineer, I've built scalable solutions across diverse industries including fintech, EdTech, SaaS platforms, and renewable energy. I've contributed to products serving millions of users and led teams in building robust cloud infrastructure on AWS and Azure.",
+      "As Co-Founder and CTO at HelioExpect (Incubated by AIC-IIITH, IIIT Hyderabad), I'm leading the development of cutting-edge forecasting and predictive monitoring tools that empower renewable energy producers. The platform now forecasts 4+ GW of capacity across 30+ sites in 3 countries at 98% accuracy, reducing grid penalties and enabling seamless integration with national power infrastructure.",
+      "With over 6 years of professional experience as a Full-Stack Engineer, I've built scalable solutions across diverse industries including fintech, EdTech, SaaS platforms, and renewable energy. I've contributed to products serving millions of users and led teams in building robust cloud infrastructure on AWS and Azure.",
       "My technical expertise spans the entire stack—from React and Next.js on the frontend to Spring Boot and Django on the backend, with extensive experience in cloud architecture, DevOps, and database optimization. I'm passionate about writing clean, maintainable code and building systems that scale."
     ],
     cards: [
@@ -25,6 +25,17 @@ export const siteConfig = {
     ]
   }
 };
+
+/** Production clients of HelioExpect — matches the verified, whitelisted logo set on helioexpect.com. */
+export const clientLogos = [
+  { name: "Sprng / Shell", src: "/logos/clients/sprng-shell-logo.webp" },
+  { name: "SRV Solar", src: "/logos/clients/srv-solar-logo.png" },
+  { name: "Sunsure Energy", src: "/logos/clients/sunsure-logo.webp" },
+  { name: "UPC Renewables", src: "/logos/clients/upcindia-logo.jpeg" },
+  { name: "Nexifratch Energy", src: "/logos/clients/nexif-logo.webp" },
+  { name: "DRA", src: "/logos/clients/dra-logo.png" },
+  { name: "KP Group", src: "/logos/clients/kp-group-logo.png" },
+];
 
 export const projects = [
   {
