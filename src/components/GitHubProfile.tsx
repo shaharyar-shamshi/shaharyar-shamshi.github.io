@@ -5,7 +5,7 @@ import { githubStats, featuredRepos } from "@/data/resume";
 
 export const GitHubProfile = () => {
   return (
-    <section id="github" className="section border-t border-foreground/80">
+    <section id="github" className="section">
       <div className="section-inner max-w-content">
         <SectionHeader
           eyebrow="By the Numbers"
@@ -14,10 +14,10 @@ export const GitHubProfile = () => {
         />
 
         {/* Stat strip */}
-        <Reveal className="grid grid-cols-2 divide-x divide-y divide-border border border-border md:grid-cols-4 md:divide-y-0">
+        <Reveal className="surface grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4 md:divide-y-0">
           {githubStats.map((stat) => (
             <div key={stat.label} className="px-6 py-6 text-center">
-              <div className="font-mono text-4xl font-bold md:text-5xl">{stat.value}</div>
+              <div className="font-display text-4xl font-bold md:text-5xl">{stat.value}</div>
               <div className="mt-2 mono-tag">{stat.label}</div>
             </div>
           ))}
@@ -33,7 +33,7 @@ export const GitHubProfile = () => {
                 rel="noopener noreferrer"
                 className="surface surface-hover group flex h-full flex-col p-6"
               >
-                <div className="flex items-center justify-between border-b border-border pb-3">
+                <div className="flex items-center justify-between">
                   <span className="mono-tag">Repository</span>
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
@@ -43,7 +43,7 @@ export const GitHubProfile = () => {
                 </p>
                 <div className="mt-5 flex items-center gap-4 mono-tag">
                   <span className="flex items-center gap-1.5">
-                    <span className="h-2.5 w-2.5 bg-brand" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-brand" />
                     {repo.language}
                   </span>
                   <span className="flex items-center gap-1">
@@ -65,7 +65,7 @@ export const GitHubProfile = () => {
             href="https://github.com/shaharyar-shamshi"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-11 items-center gap-2 border border-foreground/60 px-6 font-mono text-sm font-medium uppercase tracking-wide transition-colors hover:bg-accent"
+            className="inline-flex h-11 items-center gap-2 rounded-pill border border-border bg-background px-6 text-sm font-medium transition-colors hover:bg-accent"
           >
             <Github className="h-4 w-4" />
             Read the full profile

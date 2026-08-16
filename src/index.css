@@ -3,84 +3,90 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------
-   Design system — Broadsheet newspaper.
-   Cream newsprint, warm ink, editorial-red accent, hairline rules,
-   high-contrast serif headlines. "Night Edition" = dark mode.
+   Design system — Apple-Clean.
+   White/light-gray surfaces, near-black ink, restrained blue accent,
+   pill radii, soft elevation, Inter Tight typography.
    All colors are HSL. shadcn semantic tokens preserved.
 ------------------------------------------------------------------ */
 
 @layer base {
   :root {
-    /* Newsprint & ink */
-    --background: 42 30% 95%;
-    --foreground: 28 14% 12%;
+    /* Surfaces & ink */
+    --background: 0 0% 100%;
+    --foreground: 240 20% 5%;
 
-    --card: 44 34% 97%;
-    --card-foreground: 28 14% 12%;
+    --card: 240 9% 97%;
+    --card-foreground: 240 20% 5%;
 
-    --popover: 44 34% 97%;
-    --popover-foreground: 28 14% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 5%;
 
     /* Primary = ink black */
-    --primary: 28 16% 12%;
-    --primary-foreground: 44 34% 96%;
+    --primary: 240 20% 5%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 20% 89%;
-    --secondary-foreground: 28 14% 20%;
+    --secondary: 240 9% 95%;
+    --secondary-foreground: 240 20% 5%;
 
-    --muted: 40 20% 90%;
-    --muted-foreground: 30 8% 38%;
+    --muted: 240 9% 96%;
+    --muted-foreground: 240 2% 54%;
 
-    --accent: 40 22% 87%;
-    --accent-foreground: 28 14% 14%;
+    --accent: 221 100% 97%;
+    --accent-foreground: 240 20% 5%;
 
-    --destructive: 0 65% 42%;
-    --destructive-foreground: 44 34% 96%;
+    --destructive: 353 66% 53%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 14% 76%;
-    --input: 30 14% 76%;
-    --ring: 5 62% 40%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 224 76% 48%;
 
-    /* Editorial red accent */
-    --brand: 5 62% 40%;
-    --brand-foreground: 44 34% 96%;
-    --brand-muted: 5 55% 48%;
+    /* Brand accent — restrained blue, never a hero fill */
+    --brand: 224 76% 48%;
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 224 60% 58%;
+    --brand-soft: 221 100% 97%;
 
-    --radius: 0rem;
+    --ink-soft: 230 8% 31%;
+
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 30 8% 9%;
-    --foreground: 42 22% 88%;
+    --background: 240 3% 12%;
+    --foreground: 240 6% 92%;
 
-    --card: 30 8% 11%;
-    --card-foreground: 42 22% 88%;
+    --card: 240 4% 15%;
+    --card-foreground: 240 6% 92%;
 
-    --popover: 30 8% 11%;
-    --popover-foreground: 42 22% 88%;
+    --popover: 240 4% 15%;
+    --popover-foreground: 240 6% 92%;
 
-    --primary: 42 24% 90%;
-    --primary-foreground: 30 8% 10%;
+    --primary: 240 6% 96%;
+    --primary-foreground: 240 20% 8%;
 
-    --secondary: 30 6% 16%;
-    --secondary-foreground: 42 18% 82%;
+    --secondary: 240 4% 18%;
+    --secondary-foreground: 240 6% 88%;
 
-    --muted: 30 6% 16%;
-    --muted-foreground: 40 8% 60%;
+    --muted: 240 4% 18%;
+    --muted-foreground: 240 3% 62%;
 
-    --accent: 30 6% 18%;
-    --accent-foreground: 42 22% 88%;
+    --accent: 240 4% 20%;
+    --accent-foreground: 240 6% 92%;
 
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 42 22% 92%;
+    --destructive: 353 62% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 34 8% 26%;
-    --input: 34 8% 26%;
-    --ring: 6 72% 58%;
+    --border: 240 6% 24%;
+    --input: 240 6% 24%;
+    --ring: 217 91% 60%;
 
-    --brand: 6 72% 58%;
-    --brand-foreground: 30 8% 8%;
-    --brand-muted: 6 62% 64%;
+    --brand: 217 91% 60%;
+    --brand-foreground: 240 20% 8%;
+    --brand-muted: 217 80% 68%;
+    --brand-soft: 220 30% 18%;
+
+    --ink-soft: 240 5% 78%;
   }
 }
 
@@ -91,29 +97,12 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 92px;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "onum", "liga", "dlig", "kern";
-    hanging-punctuation: first allow-end last;
-  }
-
-  /* Subtle newsprint grain over the paper */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .dark body::before {
-    opacity: 0.05;
-    mix-blend-mode: screen;
+    font-feature-settings: "liga", "kern";
   }
 
   p {
@@ -121,7 +110,7 @@
   }
 
   ::selection {
-    background: hsl(var(--brand) / 0.22);
+    background: hsl(var(--brand) / 0.18);
   }
 
   h1,
@@ -131,7 +120,7 @@
   h5,
   h6 {
     @apply font-display;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
@@ -143,128 +132,36 @@
 
 @layer components {
   .section {
-    @apply py-16 md:py-20;
+    @apply py-16 md:py-24;
   }
 
   .section-inner {
     @apply container mx-auto px-6;
   }
 
-  /* Article box — hairline border, square corners */
+  /* Rounded card, hairline border, soft elevation */
   .surface {
-    @apply border border-border bg-card;
+    @apply rounded-card border border-border bg-card shadow-soft;
   }
 
   .surface-hover {
-    @apply transition-colors duration-200 hover:border-foreground/50;
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elev;
   }
 
-  /* Condensed uppercase kicker / section label */
+  /* Small pill label — kicker / section badge */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand;
+    @apply inline-flex items-center gap-2 rounded-pill bg-brand-soft px-3 py-1 text-xs font-medium text-brand;
   }
 
-  /* Condensed metadata: datelines, tags, numbers */
+  /* Quiet metadata: dates, tags, counts */
   .mono-tag {
-    @apply font-mono text-xs uppercase tracking-wide text-muted-foreground;
+    @apply text-xs font-medium text-muted-foreground;
   }
 }
 
 @layer utilities {
   .text-brand {
     color: hsl(var(--brand));
-  }
-
-  /* Rules */
-  .rule {
-    border-top: 1px solid hsl(var(--foreground) / 0.85);
-  }
-
-  .rule-hair {
-    border-top: 1px solid hsl(var(--foreground) / 0.28);
-  }
-
-  .rule-double {
-    border-top: 3px double hsl(var(--foreground) / 0.85);
-  }
-
-  /* Section divider label: ─── LABEL ─── */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .divider::before,
-  .divider::after {
-    content: "";
-    flex: 1;
-    border-top: 1px solid hsl(var(--foreground) / 0.28);
-  }
-
-  /* Multi-column body text with a column rule */
-  .news-columns {
-    column-gap: 2.25rem;
-    column-rule: 1px solid hsl(var(--border));
-  }
-
-  @media (min-width: 768px) {
-    .news-columns {
-      columns: 2;
-    }
-  }
-
-  .justify-text {
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-  }
-
-  .smallcaps {
-    font-variant: small-caps;
-    letter-spacing: 0.04em;
-  }
-
-  /* Newsprint halftone dots over a photo */
-  .halftone {
-    position: relative;
-  }
-
-  .halftone::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(hsl(var(--foreground)) 0.6px, transparent 0.8px);
-    background-size: 3px 3px;
-    mix-blend-mode: overlay;
-    opacity: 0.28;
-  }
-
-  /* Pull-quote, ruled top and bottom */
-  .pullquote {
-    font-family: "Playfair Display", Georgia, serif;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 1.16;
-    border-top: 3px double hsl(var(--foreground) / 0.85);
-    border-bottom: 3px double hsl(var(--foreground) / 0.85);
-  }
-
-  /* Ornament — small centered flourish between rules */
-  .ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: hsl(var(--brand));
-  }
-
-  .ornament::before,
-  .ornament::after {
-    content: "";
-    width: 2.5rem;
-    border-top: 1px solid hsl(var(--foreground) / 0.35);
   }
 
   /* Understated hover underline for inline links */
@@ -280,44 +177,28 @@
     text-decoration-color: hsl(var(--brand));
   }
 
-  @keyframes paper-in {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  .paper-in {
-    animation: paper-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  /* Drop cap on the opening paragraph */
-  .dropcap::first-letter {
-    float: left;
-    font-family: "Playfair Display", Georgia, serif;
-    font-weight: 800;
-    font-size: 3.4em;
-    line-height: 0.74;
-    padding: 0.05em 0.1em 0 0;
-    color: hsl(var(--brand));
-  }
-
-  /* Scroll reveal */
+  /* Scroll reveal — fade + rise */
   .reveal {
     opacity: 0;
     transform: translateY(14px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+  }
+
+  /* Scroll-snap host — sections land softly when scrolling stops nearby */
+  .scroll-snap-host {
+    scroll-snap-type: y proximity;
+  }
+
+  .scroll-snap-host > section {
+    scroll-snap-align: start;
+    scroll-margin-top: 92px;
   }
 }
 
@@ -330,6 +211,12 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .scroll-snap-host,
+  .scroll-snap-host > section {
+    scroll-snap-type: none;
+    scroll-snap-align: none;
   }
 
   *,

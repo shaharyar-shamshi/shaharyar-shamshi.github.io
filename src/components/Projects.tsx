@@ -4,7 +4,7 @@ import { projects } from "@/data/resume";
 
 export const Projects = () => {
   return (
-    <section id="projects" className="section border-t border-foreground/80">
+    <section id="projects" className="section">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Selected Work"
@@ -19,12 +19,10 @@ export const Projects = () => {
               <Reveal key={project.title} delay={(i % 2) * 80}>
                 <article className="surface surface-hover group h-full p-7">
                   <div className="flex items-start justify-between gap-4">
-                    <div className="grid h-11 w-11 place-items-center rounded-lg bg-brand/10 text-brand">
+                    <div className="grid h-11 w-11 place-items-center rounded-card bg-brand-soft text-brand">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {project.company}
-                    </span>
+                    <span className="text-xs text-muted-foreground">{project.company}</span>
                   </div>
 
                   <h3 className="mt-5 text-xl font-semibold tracking-tight">
@@ -38,7 +36,7 @@ export const Projects = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-border px-2 py-0.5 font-mono text-[0.7rem] text-muted-foreground"
+                        className="rounded-pill bg-secondary px-2.5 py-0.5 text-xs text-muted-foreground"
                       >
                         {tag}
                       </span>

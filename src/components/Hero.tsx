@@ -2,119 +2,34 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { siteConfig } from "@/data/resume";
 
-const today = new Date().toLocaleDateString("en-US", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-const inside = [
-  { name: "The Profile", href: "about", pg: "02" },
-  { name: "Experience", href: "experience", pg: "03" },
-  { name: "Toolkit", href: "skills", pg: "04" },
-  { name: "Selected Work", href: "projects", pg: "05" },
-  { name: "Open Source", href: "opensource", pg: "06" },
-  { name: "Contact", href: "contact", pg: "08" },
+const stats = [
+  ["Experience", "5+ years"],
+  ["Focus", "Renewable energy"],
+  ["Discipline", "Full-stack"],
 ];
-
-const scrollTo = (id: string) =>
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export const Hero = () => {
   return (
-    <section id="hero" className="pt-20">
-      <div className="section-inner max-w-content paper-in">
-        {/* Masthead utility row */}
-        <div className="rule flex flex-wrap items-center justify-between gap-2 py-2 mono-tag">
-          <span>{today}</span>
-          <span className="hidden sm:inline">Vol. I &middot; No. 1</span>
-          <span>shaharyarshamshi.com</span>
-        </div>
+    <section id="hero" className="pt-40 pb-20 md:pt-48 md:pb-28">
+      <div className="section-inner max-w-content reveal is-visible">
+        <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+          <div>
+            <span className="eyebrow">Co-Founder &amp; CTO, HelioExpect</span>
 
-        {/* Nameplate with ears */}
-        <div className="border-y-2 border-foreground py-5 md:py-7">
-          <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-[8rem_1fr_8rem]">
-            <div className="hidden border border-border px-3 py-2 text-center md:block">
-              <p className="mono-tag">Established</p>
-              <p className="font-display text-lg font-bold leading-tight">MMXIX</p>
-              <p className="mono-tag">Delhi, IN</p>
-            </div>
-
-            <h1 className="text-center font-display text-5xl font-black leading-none tracking-tight sm:text-7xl md:text-8xl">
-              Shaharyar Shamshi
+            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+              Building tools to accelerate the renewable energy transition.
             </h1>
 
-            <div className="hidden border border-border px-3 py-2 text-center md:block">
-              <p className="mono-tag">Edition</p>
-              <p className="font-display text-lg font-bold leading-tight">Portfolio</p>
-              <p className="mono-tag">Price · Free</p>
-            </div>
-          </div>
-        </div>
-        <div className="rule-double mt-[3px] py-2">
-          <p className="ornament mono-tag !text-foreground tracking-[0.32em]">
-            Technology &middot; Renewable Energy &middot; Software Engineering
-          </p>
-        </div>
-
-        {/* Inside this issue */}
-        <nav className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 border-y border-foreground/80 py-2">
-          <span className="eyebrow">Inside</span>
-          {inside.map((item) => (
-            <button
-              key={item.href}
-              onClick={() => scrollTo(item.href)}
-              className="group flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.name}
-              <span className="text-brand">{item.pg}</span>
-            </button>
-          ))}
-        </nav>
-
-        {/* Lead story */}
-        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-3">
-          <div className="md:col-span-2 md:border-r md:border-border md:pr-8">
-            <p className="eyebrow">Lead Story</p>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-[1.08] sm:text-4xl md:text-5xl">
-              Co-Founder &amp; CTO Builds Tools to Accelerate the Renewable Energy Transition
-            </h2>
-            <p className="mt-4 font-display text-lg italic leading-snug text-muted-foreground md:text-xl">
-              A full-stack engineer with 5+ years across fintech, developer tools and SaaS turns his
-              focus to forecasting and predictive monitoring for the grid.
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              {siteConfig.hero.tagline} A full-stack engineer with 5+ years across fintech,
+              developer tools and SaaS, now focused on forecasting and predictive monitoring
+              for the grid.
             </p>
 
-            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 rule-hair pt-3 mono-tag">
-              <span className="smallcaps text-sm normal-case tracking-normal text-foreground">
-                By Shaharyar Shamshi
-              </span>
-              <span aria-hidden>&mdash;</span>
-              <span>HelioExpect, Delhi</span>
-            </p>
-
-            <div className="news-columns mt-5 text-[0.975rem] leading-relaxed text-foreground/90 justify-text">
-              <p className="dropcap">
-                {siteConfig.hero.tagline} At HelioExpect &mdash; incubated by AIC-IIITH, IIIT
-                Hyderabad &mdash; the mission is to reduce grid penalties and enable seamless
-                integration with national power infrastructure.
-              </p>
-              <p className="mt-4">
-                The work spans the full stack: React and Next.js on the front end, Spring Boot and
-                Django on the back end, and cloud architecture on AWS and Azure &mdash; the same
-                breadth that has powered products serving millions of users.
-              </p>
-            </div>
-
-            <blockquote className="pullquote my-6 py-4 text-center text-xl leading-tight md:text-2xl">
-              &ldquo;Reduce grid penalties, integrate with national power infrastructure, and
-              accelerate the transition.&rdquo;
-            </blockquote>
-
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="mailto:shaharyarshamshi@gmail.com"
-                className="inline-flex h-11 items-center gap-2 bg-primary px-5 font-mono text-sm font-medium uppercase tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex h-11 items-center gap-2 rounded-pill bg-primary px-5 text-sm font-medium text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
               >
                 <Mail className="h-4 w-4" />
                 Get in touch
@@ -123,7 +38,7 @@ export const Hero = () => {
                 href={siteConfig.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 border border-foreground/60 px-5 font-mono text-sm font-medium uppercase tracking-wide transition-colors hover:bg-accent"
+                className="inline-flex h-11 items-center gap-2 rounded-pill border border-border bg-background px-5 text-sm font-medium transition-colors hover:bg-accent"
               >
                 <Github className="h-4 w-4" />
                 GitHub
@@ -132,45 +47,35 @@ export const Hero = () => {
                 href={siteConfig.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 border border-foreground/60 px-5 font-mono text-sm font-medium uppercase tracking-wide transition-colors hover:bg-accent"
+                className="inline-flex h-11 items-center gap-2 rounded-pill border border-border bg-background px-5 text-sm font-medium transition-colors hover:bg-accent"
               >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
             </div>
+
+            <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+              {stats.map(([k, v]) => (
+                <div key={k}>
+                  <dt className="mono-tag">{k}</dt>
+                  <dd className="mt-1 font-display text-lg font-semibold">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          {/* Portrait column */}
-          <figure className="md:pt-6">
-            <div className="halftone border border-foreground/70 p-1.5">
+          <div className="mx-auto w-full max-w-sm md:mx-0">
+            <div className="overflow-hidden rounded-elev border border-border/60 shadow-elev">
               <img
                 src={profilePhoto}
                 alt="Shaharyar Shamshi"
-                className="aspect-[4/5] w-full object-cover grayscale contrast-[1.05]"
+                className="aspect-[4/5] w-full object-cover"
               />
             </div>
-            <figcaption className="mt-2 border-t border-border pt-2 font-display text-sm italic text-muted-foreground">
-              Shaharyar Shamshi, Co-Founder &amp; CTO of HelioExpect, photographed in 2025.
-            </figcaption>
-
-            <div className="mt-5 border border-border">
-              <p className="border-b border-border bg-accent px-3 py-1.5 mono-tag text-foreground">
-                By the numbers
-              </p>
-              <dl className="divide-y divide-border">
-                {[
-                  ["Experience", "5+ years"],
-                  ["Focus", "Renewable energy"],
-                  ["Discipline", "Full-stack"],
-                ].map(([k, v]) => (
-                  <div key={k} className="flex items-center justify-between px-3 py-2 text-sm">
-                    <dt className="mono-tag">{k}</dt>
-                    <dd className="font-display font-bold">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </figure>
+            <p className="mt-3 text-center text-sm text-muted-foreground md:text-left">
+              Shaharyar Shamshi, Co-Founder &amp; CTO of HelioExpect
+            </p>
+          </div>
         </div>
       </div>
     </section>

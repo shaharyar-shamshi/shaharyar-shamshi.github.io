@@ -49,38 +49,36 @@ export const Navigation = () => {
   };
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-background transition-shadow",
-        scrolled ? "border-b border-foreground/80" : "border-b border-transparent"
-      )}
-    >
-      <nav className="container mx-auto flex h-14 items-center justify-between px-6">
+    <header className="fixed inset-x-0 top-[18px] z-50 flex justify-center px-4">
+      <nav
+        className={cn(
+          "flex h-[58px] w-full max-w-3xl items-center justify-between rounded-pill border border-border/60 bg-background/80 px-3 backdrop-blur-lg transition-shadow duration-300",
+          scrolled ? "shadow-float" : "shadow-soft"
+        )}
+      >
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-display text-base font-bold tracking-tight"
+          className="rounded-pill px-3 py-2 font-display text-sm font-semibold tracking-tight"
         >
           Shaharyar Shamshi
         </button>
 
-        <div className="hidden items-center md:flex">
-          {navItems.map((item, i) => (
-            <div key={item.href} className="flex items-center">
-              {i > 0 && <span className="mx-1 text-border" aria-hidden>|</span>}
-              <button
-                onClick={() => go(item.href)}
-                className={cn(
-                  "px-2 py-2 font-mono text-xs font-medium uppercase tracking-widest transition-colors",
-                  active === item.href
-                    ? "text-brand"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {item.name}
-              </button>
-            </div>
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => go(item.href)}
+              className={cn(
+                "rounded-pill px-3 py-2 text-sm font-medium transition-colors",
+                active === item.href
+                  ? "bg-brand-soft text-brand"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {item.name}
+            </button>
           ))}
-          <div className="ml-3 border-l border-border pl-2">
+          <div className="ml-1 pl-1">
             <ThemeToggle />
           </div>
         </div>
@@ -89,7 +87,7 @@ export const Navigation = () => {
           <ThemeToggle />
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="grid h-9 w-9 place-items-center text-foreground hover:bg-accent"
+            className="grid h-9 w-9 place-items-center rounded-pill text-foreground hover:bg-accent"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
@@ -99,13 +97,13 @@ export const Navigation = () => {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background md:hidden">
-          <div className="container mx-auto flex flex-col divide-y divide-border px-6">
+        <div className="absolute inset-x-4 top-[74px] rounded-card border border-border/60 bg-background/95 shadow-float backdrop-blur-lg md:hidden">
+          <div className="flex flex-col divide-y divide-border px-4">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => go(item.href)}
-                className="py-3 text-left font-mono text-sm font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground"
+                className="py-3 text-left text-sm font-medium text-muted-foreground hover:text-foreground"
               >
                 {item.name}
               </button>

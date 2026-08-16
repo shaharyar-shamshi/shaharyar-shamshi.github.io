@@ -5,7 +5,7 @@ import { openSourceContributions } from "@/data/resume";
 
 export const OpenSource = () => {
   return (
-    <section id="opensource" className="section border-t border-foreground/80">
+    <section id="opensource" className="section">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Community"
@@ -28,7 +28,7 @@ export const OpenSource = () => {
                     <p className="mt-1 text-sm text-brand">{contrib.role}</p>
                   </div>
                   <span className="flex items-center gap-2">
-                    <span className="font-mono text-xs text-muted-foreground">{contrib.period}</span>
+                    <span className="text-xs text-muted-foreground">{contrib.period}</span>
                     <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </span>
                 </div>
@@ -50,7 +50,7 @@ export const OpenSource = () => {
                   {contrib.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-border px-2 py-0.5 font-mono text-[0.7rem] text-muted-foreground"
+                      className="rounded-pill bg-secondary px-2.5 py-0.5 text-xs text-muted-foreground"
                     >
                       {tag}
                     </span>

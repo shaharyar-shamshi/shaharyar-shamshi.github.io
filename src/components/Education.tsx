@@ -8,7 +8,7 @@ export const Education = () => {
   const recognition = education.find((e) => e.type === "Recognition");
 
   return (
-    <section id="education" className="section border-t border-foreground/80">
+    <section id="education" className="section">
       <div className="section-inner">
         <SectionHeader
           eyebrow="Background"
@@ -19,12 +19,12 @@ export const Education = () => {
           {degree && (
             <Reveal>
               <div className="surface h-full p-7">
-                <div className="grid h-11 w-11 place-items-center rounded-lg bg-brand/10 text-brand">
+                <div className="grid h-11 w-11 place-items-center rounded-card bg-brand-soft text-brand">
                   <GraduationCap className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold tracking-tight">{degree.title}</h3>
                 <p className="mt-1 text-sm text-brand">{degree.institution}</p>
-                <p className="mt-1 font-mono text-xs text-muted-foreground">{degree.period}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{degree.period}</p>
               </div>
             </Reveal>
           )}
@@ -32,7 +32,7 @@ export const Education = () => {
           {recognition && (
             <Reveal delay={80}>
               <div className="surface h-full p-7">
-                <div className="grid h-11 w-11 place-items-center rounded-lg bg-secondary text-foreground">
+                <div className="grid h-11 w-11 place-items-center rounded-card bg-secondary text-foreground">
                   <Award className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold tracking-tight">Recognition</h3>

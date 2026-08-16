@@ -14,15 +14,17 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <GitHubProfile />
-      <OpenSource />
-      <Education />
-      <Contact />
+      <main className="scroll-snap-host">
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Projects />
+        <GitHubProfile />
+        <OpenSource />
+        <Education />
+        <Contact />
+      </main>
       <BackToTop />
     </div>
   );

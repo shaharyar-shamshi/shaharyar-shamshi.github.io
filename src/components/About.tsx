@@ -25,37 +25,32 @@ export const About = () => {
   const [lead, ...rest] = siteConfig.about.bio;
 
   return (
-    <section id="about" className="section border-t border-foreground/80">
+    <section id="about" className="section">
       <div className="section-inner max-w-content">
         <SectionHeader eyebrow="The Profile" title={siteConfig.about.tagline} />
 
-        <Reveal
-          className="news-columns text-[0.975rem] leading-relaxed text-foreground/90 justify-text lg:[columns:3]"
-          as="div"
-        >
-          <p className="dropcap">{lead}</p>
+        <Reveal className="mx-auto max-w-3xl space-y-4 text-center text-lg leading-relaxed text-muted-foreground">
+          <p>{lead}</p>
           {rest.map((paragraph, i) => (
-            <p key={i} className="mt-4">
-              {paragraph}
-            </p>
+            <p key={i}>{paragraph}</p>
           ))}
         </Reveal>
 
         <Reveal className="mx-auto my-12 max-w-3xl">
-          <blockquote className="pullquote py-5 text-center text-2xl leading-tight md:text-3xl">
+          <blockquote className="rounded-card bg-brand-soft px-8 py-8 text-center font-display text-2xl font-semibold leading-tight text-foreground md:text-3xl">
             &ldquo;Building systems that scale &mdash; and that move the energy transition
             forward.&rdquo;
           </blockquote>
         </Reveal>
 
-        <div className="grid gap-px border border-border bg-border sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-3">
           {principles.map((p, i) => (
-            <Reveal key={p.title} delay={i * 80} className="bg-card">
-              <div className="h-full p-6">
-                <div className="flex items-center gap-3">
-                  <p.icon className="h-5 w-5 text-brand" />
-                  <h3 className="font-display text-lg font-bold">{p.title}</h3>
+            <Reveal key={p.title} delay={i * 80}>
+              <div className="surface h-full p-6">
+                <div className="grid h-11 w-11 place-items-center rounded-card bg-brand-soft text-brand">
+                  <p.icon className="h-5 w-5" />
                 </div>
+                <h3 className="mt-4 font-display text-lg font-bold">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>

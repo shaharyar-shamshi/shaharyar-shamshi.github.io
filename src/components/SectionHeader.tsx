@@ -9,18 +9,15 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-/** Newspaper section divider: ─── KICKER ─── over a serif headline. */
 export const SectionHeader = ({ eyebrow, title, subtitle, className }: SectionHeaderProps) => {
   return (
     <Reveal className={cn("mb-10 text-center md:mb-12", className)}>
-      <div className="divider mx-auto max-w-md">
-        <span className="eyebrow">{eyebrow}</span>
-      </div>
+      <span className="eyebrow">{eyebrow}</span>
       <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mx-auto mt-3 max-w-prose font-display text-base italic leading-snug text-muted-foreground md:text-lg">
+        <p className="mx-auto mt-3 max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg">
           {subtitle}
         </p>
       )}
