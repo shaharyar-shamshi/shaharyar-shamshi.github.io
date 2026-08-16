@@ -11,7 +11,7 @@ export const Contact = () => {
         <Reveal>
           <div className="surface py-12 text-center md:py-16">
             <span className="eyebrow">Get in touch</span>
-            <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.08] md:text-6xl">
+            <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tighter md:text-6xl">
               Let&apos;s build something that matters.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">

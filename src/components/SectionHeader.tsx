@@ -12,8 +12,10 @@ interface SectionHeaderProps {
 export const SectionHeader = ({ eyebrow, title, subtitle, className }: SectionHeaderProps) => {
   return (
     <Reveal className={cn("mb-10 text-center md:mb-12", className)}>
-      <span className="eyebrow">{eyebrow}</span>
-      <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl">
+      <span className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+        {eyebrow}
+      </span>
+      <h2 className="mt-4 font-display text-3xl font-bold tracking-tighter md:text-4xl">
         {title}
       </h2>
       {subtitle && (

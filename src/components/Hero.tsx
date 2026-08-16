@@ -17,7 +17,7 @@ export const Hero = () => {
           <div>
             <span className="eyebrow">Co-Founder &amp; CTO, HelioExpect</span>
 
-            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tighter sm:text-5xl md:text-6xl">
               Building tools to accelerate the renewable energy transition.
             </h1>
 

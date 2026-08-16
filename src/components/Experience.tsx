@@ -12,11 +12,11 @@ export const Experience = () => {
           subtitle="Fintech, EdTech, developer tools, SaaS, and renewable energy — front to back."
         />
 
-        <div className="mx-auto max-w-4xl space-y-4">
+        <div className="surface mx-auto max-w-4xl divide-y divide-border">
           {experiences.map((exp, i) => (
             <Reveal key={`${exp.company}-${i}`} delay={Math.min(i, 4) * 50}>
-              <article className="surface grid gap-3 p-6 md:grid-cols-[10rem_1fr] md:gap-8">
-                <div className="md:text-right">
+              <article className="grid gap-3 p-6 md:grid-cols-[9rem_1fr] md:gap-8">
+                <div>
                   <p className="mono-tag">{exp.period}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{exp.location}</p>
                 </div>

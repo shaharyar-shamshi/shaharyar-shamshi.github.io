@@ -25,7 +25,7 @@ export const About = () => {
   const [lead, ...rest] = siteConfig.about.bio;
 
   return (
-    <section id="about" className="section">
+    <section id="about" className="section bg-card">
       <div className="section-inner max-w-content">
         <SectionHeader eyebrow="The Profile" title={siteConfig.about.tagline} />
 
@@ -43,18 +43,14 @@ export const About = () => {
           </blockquote>
         </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-8 border-t border-border pt-8 sm:grid-cols-3 sm:gap-10">
           {principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>
-              <div className="surface h-full p-6">
-                <div className="grid h-11 w-11 place-items-center rounded-card bg-brand-soft text-brand">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-display text-lg font-bold">{p.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {p.description}
-                </p>
-              </div>
+              <p.icon className="h-5 w-5 text-brand" />
+              <h3 className="mt-4 font-display text-lg font-bold">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {p.description}
+              </p>
             </Reveal>
           ))}
         </div>
